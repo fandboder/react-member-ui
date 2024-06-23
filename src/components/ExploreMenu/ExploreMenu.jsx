@@ -15,12 +15,15 @@ const ExploreMenu = ({ category, setCategory }) => {
           return (
             <div
               onClick={() =>
-                setCategory((prev) =>
-                  prev === item.menu_name ? "All" : item.menu_name
+                setCategory(
+                  /*prev*/ item.menu_name /*=>*/
+                  /*prev === item.menu_name ? "All" : item.menu_name ? "active" : ""*/
                 )
               }
               key={index}
-              className="explore-menu-list-item"
+              className={`explore-menu-list-item ${
+                category === item.menu_name ? "active" : ""
+              }`}
             >
               <img
                 className={category === item.menu_name ? "active" : ""}
@@ -38,8 +41,8 @@ const ExploreMenu = ({ category, setCategory }) => {
 };
 
 ExploreMenu.propTypes = {
-  category: PropTypes.string.isRequired, // category nên là một chuỗi và là bắt buộc
-  setCategory: PropTypes.func.isRequired, // setCategory nên là một hàm và là bắt buộc
+  category: PropTypes.string.isRequired,
+  setCategory: PropTypes.func.isRequired,
 };
 
 export default ExploreMenu;

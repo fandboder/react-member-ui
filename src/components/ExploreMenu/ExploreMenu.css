@@ -11,6 +11,7 @@
 .explore-menu-text{
     max-width: 60%;
     columns: #808080;
+    white-space: nowrap;
 }
 
 .explore-menu-list{
