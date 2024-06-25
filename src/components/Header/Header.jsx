@@ -6,7 +6,7 @@ const Header = () => {
       <div className="header-contents">
         <h2>Bùng nổ vị giác</h2>
         <p>
-          Bạn đã dói bụng chưa ? Đừng để cơn đói làm phiền bạn!
+          Bạn đã đói bụng chưa ? Đừng để cơn đói làm phiền bạn!
           <br />
           Đắm chìm trong hương vị tuyệt hảo của những chiếc burger,
           <br />

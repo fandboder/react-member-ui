@@ -22,6 +22,7 @@
     text-align: center;
     margin: 20px 0px;
     overflow-x: scroll;
+    justify-content: flex-start;
 }
 .explore-menu-list::-webkit-scrollbar{
     display: none;
@@ -48,4 +49,18 @@
 .explore-menu-list-item .active{
     border: 4px solid #FF6500 ;
     padding: 2px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:1050px) {
+    .explore-menu h1{
+        font-weight: 400;
+        font-size: 25px;
+    }
+    .explore-menu-text{
+        max-width: 100%;
+        font-size: 14px;
+        white-space: pre-wrap;
+    }  
 }
