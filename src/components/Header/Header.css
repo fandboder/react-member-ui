@@ -1,5 +1,5 @@
 .header {
-    height: 34vw;
+    height: 40vw;
     margin: 30px auto;
     background: url('/header_img.png') no-repeat;
     background-size: cover; /* This will make the image cover the entire container */
@@ -38,4 +38,22 @@
     font-size: max(1vw,13px);
     border: 1px solid #FFF455;
     border-radius: 50px;
+}
+/* RESPONSIVE */
+@media (max-width:1500px) {
+    .header-contents{
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 750px) {
+    .header-contents{
+        max-width: 65%;
+    }
+    .header-contents p{
+        display: none;
+    }
+    .header-contents button{
+        padding: 2vw 4vw ;
+    }
 }
