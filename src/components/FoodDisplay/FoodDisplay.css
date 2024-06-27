@@ -1,14 +1,30 @@
-.food-display{
+.food-display {
     margin-top: 30px;
 }
-.food-display h2{
-    font-size: max(2nw,24px);
+
+.food-display h2 {
+    font-size: max(2nw, 24px);
     font-weight: 600;
 }
-.food-display-list{
+
+.food-display-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     margin-top: 30px;
-    gap: 30px;
-    row-gap: 50px;
+    gap: 15px; /* Giảm khoảng cách giữa các cột */
+    row-gap: 25px; /* Giảm khoảng cách giữa các hàng */
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 750px) {
+    .food-display-list {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Even smaller columns */
+        gap: 10px; /* Giảm khoảng cách giữa các cột */
+        row-gap: 15px; /* Giảm khoảng cách giữa các hàng */
+    }
+
+    .food-display h2 {
+        font-size: 20px;
+    }
 }
