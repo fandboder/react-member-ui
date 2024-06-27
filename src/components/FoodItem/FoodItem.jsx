@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import "./FoodItem.css";
 import { assets } from "./../../assets/assets";
@@ -6,15 +6,39 @@ import { StoreContext } from "../context/StoreContext";
 
 const FoodItem = ({ id, name, price, description, image }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleAddToCart = (id) => {
+    addToCart(id);
+    if (cartItems[id] + 1 === 10) {
+      setShowPopup(true);
+    }
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
 
   return (
     <div className="food-item">
+      {showPopup && (
+        <div className="popup">
+          <p>
+            Nếu bạn đặt món cho bữa tiệc 🎉
+            <br />
+            hãy liên hệ với nhân viên 👋
+            <br />
+            để nhận được ưu đãi tốt nhất
+          </p>
+          <button onClick={closePopup}>Close</button>
+        </div>
+      )}
       <div className="food-item-img-container">
         <img className="food-item-image" src={image} alt="" />
         {!cartItems[id] ? (
           <img
             className="add"
-            onClick={() => addToCart(id)}
+            onClick={() => handleAddToCart(id)}
             src={assets.add_icon_white}
             alt=""
           />
@@ -27,7 +51,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
             />
             <p>{cartItems[id]}</p>
             <img
-              onClick={() => addToCart(id)}
+              onClick={() => handleAddToCart(id)}
               src={assets.add_icon_green}
               alt=""
             />

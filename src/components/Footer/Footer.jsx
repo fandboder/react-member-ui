@@ -11,7 +11,9 @@ const Footer = () => {
         <div className="footer-content-center">
           <h2>Công ty</h2>
           <ul>
-            <li>Trang chủ</li>
+            <li>
+              <a href="#navbar-menu">Trang chủ</a>
+            </li>
             <li>Về chúng tôi</li>
             <li></li>
             <li></li>
