@@ -72,23 +72,67 @@
         flex-direction: column;
         gap: 20px;
     }
+    .footer-content-left .logo {
+        width: 180px;
+        height: 90px;
+    }
     .footer-copyright{
         text-align: center;
     }
     /* Các quy tắc mới để giảm kích thước chữ */
     .footer-content-left p, 
     .footer-content-center p {
-        font-size: 13px; /* Hoặc một giá trị nhỏ hơn tùy ý */
+        font-size: 13px; 
     }
 
     .footer-content-right h2, 
     .footer-content-center h2 {
-        font-size: 15px; /* Hoặc một giá trị nhỏ hơn tùy ý */
+        font-size: 15px; 
     }
 
     .footer-content-right li, 
     .footer-content-center li {
-        font-size: 13px; /* Hoặc một giá trị nhỏ hơn tùy ý */
+        font-size: 13px; 
+    }
+    
+}
+
+@media (max-width: 400px) {
+    .footer-content{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .footer-content-left .logo {
+        width: 130px;
+        height: 65px;
+    }
+    .footer-copyright{
+        font-size: 13px;
+        text-align: center;
+    }
+    .footer-content-left p{
+        display: none;
+    }
+    .footer-content-left p{
+        font-size: 10px; 
+    } 
+    .footer-content-center p{
+        display: none;
+    } 
+
+    .footer-content-right h2, 
+    .footer-content-center h2 {
+        font-size: 13px; 
+    }
+
+    .footer-content-right li, 
+    .footer-content-center li {
+        font-size: 10px; 
+    }
+    .footer-social-icons img {
+        width: 25px;
+        margin-right: 10px;
     }
     
 }
