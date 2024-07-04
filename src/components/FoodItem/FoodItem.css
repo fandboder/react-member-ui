@@ -1,10 +1,12 @@
 .food-item{
-    width: 100%;
+    width: 80%;
     margin: 10px auto;
     border-radius: 15px;
-    box-shadow: 5px 5px 10px #00000015;
-    transition: 0.3s;
     animation: fadeIn 1s;
+}
+.food-item:hover{
+    box-shadow: 4px 4px 8px 8px #C7C8CC;
+    transition: 0.2s;
 }
 .food-item-image{
     width: 100%;
@@ -12,6 +14,10 @@
 }
 .food-item-info{
     padding: 20px;
+    height: 200px; /* Set a fixed height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 .food-item-name-rating{
     display: flex;
@@ -27,12 +33,14 @@
 .food-item-desc{
     color: #676767;
     font-size: 12px;
+    flex-grow: 1; /* Make it flexible */
 }
 .food-item-price{
     color: tomato;
     font-size: 22px;
     font-weight: 500;
     margin: 10px 0px;
+    align-self: flex-end; /* Align to the bottom */
 }
 .food-item-img-container{
     position: relative;
@@ -54,35 +62,12 @@
     gap: 10px;
     padding: 6px;
     border-radius: 50px;
-    background-color: white;
+    background-color: #F3EEEA;
 } 
 .food-item-counter img{
     width: 25px;
 }
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    border: 1px solid #ccc;
-    padding: 15px;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-  }
-  
-  .popup p {
-    margin: 0 0 10px;
-  }
-  .popup button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
+
 /* RESPONSIVE */
 
 @media (max-width: 1050px) {
@@ -95,6 +80,9 @@
     }
     .food-item-desc {
         font-size: 11px;
+    }
+    .food-item-info {
+        height: 180px; /* Adjust for responsiveness */
     }
 }
 
@@ -112,6 +100,9 @@
     }
     .food-item-price {
         font-size: 20px;
+    }
+    .food-item-info {
+        height: 160px; /* Adjust for responsiveness */
     }
 }
 
@@ -138,5 +129,8 @@
     }
     .food-item-counter img {
         width: 16px;
+    }
+    .food-item-info {
+        height: 140px; /* Adjust for responsiveness */
     }
 }

@@ -6,19 +6,18 @@ import { StoreContext } from "./../context/StoreContext";
 
 const NavBar = () => {
   const [menu, setMenu] = useState("menu");
-
-  const { getTotalCartAmount } = useContext(StoreContext);
+  const { getTotalCartQuantity } = useContext(StoreContext);
 
   return (
     <div className="navbar">
       <div className="navbar-logo-container">
-        <Link to="/">
+        <Link to="/home">
           <img src={assets.logo} alt="" className="logo" />
         </Link>
       </div>
       <ul className="navbar-menu" id="navbar-menu">
         <Link
-          to="/"
+          to="/home"
           onClick={() => setMenu("home")}
           className={menu === "home" ? "active" : ""}
         >
@@ -40,13 +39,13 @@ const NavBar = () => {
         </a>
       </ul>
       <div className="navbar-right">
-        <img src={assets.search_icon} alt="" />
-        <div className="navbar-search-icon">
-          <Link to="/cart">
-            <img src={assets.basket_icon} alt="" />
-          </Link>
-          <div className={getTotalCartAmount() === 0 ? "" : "dot "}></div>
-        </div>
+        <Link to="/cart">
+          <img src={assets.basket_icon} alt="" />
+          {getTotalCartQuantity() > 0 && (
+            <span className="cart-count">{getTotalCartQuantity()}</span>
+          )}
+        </Link>
+        <div className={getTotalCartQuantity() === 0 ? "" : ""}></div>
       </div>
     </div>
   );

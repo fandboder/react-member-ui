@@ -25,6 +25,7 @@
 }
 .cart-bottom{
     margin-top: 80px;
+    margin-bottom: 50px;
     display: flex;
     justify-content: space-between;
     gap: max(12vw,20px);
@@ -60,7 +61,8 @@
     
 }
 .cart-promocode{
-    flex: 1;
+    flex: 0.5;
+    margin-right: 10px;
 }
 .cart-promocode-input{
     margin-top: 5px;

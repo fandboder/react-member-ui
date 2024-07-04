@@ -6,7 +6,7 @@ import { StoreContext } from "../context/StoreContext";
 
 const FoodItem = ({ id, name, price, description, image }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
-  const [showPopup, setShowPopup] = useState(false);
+  const [, /*showPopup*/ setShowPopup] = useState(false);
 
   const handleAddToCart = (id) => {
     addToCart(id);
@@ -15,13 +15,15 @@ const FoodItem = ({ id, name, price, description, image }) => {
     }
   };
 
-  const closePopup = () => {
+  {
+    /*const closePopup = () => {
     setShowPopup(false);
-  };
+  };*/
+  }
 
   return (
     <div className="food-item">
-      {showPopup && (
+      {/* {showPopup && (
         <div className="popup">
           <p>
             Nếu bạn đặt món cho bữa tiệc 🎉
@@ -32,7 +34,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
           </p>
           <button onClick={closePopup}>Close</button>
         </div>
-      )}
+      )}*/}
       <div className="food-item-img-container">
         <img className="food-item-image" src={image} alt="" />
         {!cartItems[id] ? (
@@ -63,7 +65,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
           <p>{name}</p>
         </div>
         <p className="food-item-desc">{description}</p>
-        <p className="food-item-price">${price} </p>
+        <p className="food-item-price">{price} vnd</p>
       </div>
     </div>
   );
