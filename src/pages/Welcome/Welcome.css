@@ -10,8 +10,8 @@ body {
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    background-color: #e3e2ddde; /* Giữ lại màu nền ban đầu */
-    color: #24292F; /* Màu chữ mới, tối hơn để tương phản */
+    background-color: #e3e2ddde; /* Keep original background color */
+    color: #24292F; /* Darker text color for contrast */
 }
 
 .logo {
@@ -26,12 +26,12 @@ body {
     font-family: "Roboto Condensed", sans-serif;
 }
 
-.greeting h1{
+.greeting h1 {
     font-size: 40px;
     font-weight: 500;
 }
 
-.greeting p{
+.greeting p {
     font-size: 30px;
     font-weight: 300;
 }
@@ -54,22 +54,48 @@ body {
     border-color: #C70039;
 }
 
-
 /* Responsive */
 @media (max-width: 1050px) {
-    .logo { width: 70%; }
-    .greeting { font-size: 50px; }
-    .order { font-size: 35px; }
+    .logo {
+        width: 150px;
+    }
+    .greeting h1 {
+        font-size: 35px;
+    }
+    .greeting p {
+        font-size: 25px;
+    }
+    .order {
+        font-size: 40px;
+    }
 }
 
 @media (max-width: 750px) {
-    .logo { width: 80%; }
-    .greeting { font-size: 35px; }
-    .order { font-size: 25px; }
+    .logo {
+        width: 120px;
+    }
+    .greeting h1 {
+        font-size: 30px;
+    }
+    .greeting p {
+        font-size: 20px;
+    }
+    .order {
+        font-size: 30px;
+    }
 }
 
 @media (max-width: 400px) {
-    .logo { width: 90%; }
-    .greeting { font-size: 25px; }
-    .order { font-size: 18px; }
+    .logo {
+        width: 100px;
+    }
+    .greeting h1 {
+        font-size: 25px;
+    }
+    .greeting p {
+        font-size: 18px;
+    }
+    .order {
+        font-size: 20px;
+    }
 }
