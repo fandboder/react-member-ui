@@ -14,7 +14,7 @@
 }
 .food-item-info{
     padding: 20px;
-    height: 200px; /* Set a fixed height */
+    height: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -25,22 +25,23 @@
     align-items: center;
     margin-bottom: 10px;
 }
-.food-item-name-rating p{
+.food-item-name p{
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .food-item-desc{
-    color: #676767;
-    font-size: 12px;
-    flex-grow: 1; /* Make it flexible */
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    flex-grow: 1;
 }
 .food-item-price{
     color: tomato;
     font-size: 22px;
-    font-weight: 500;
+    font-weight: 750;
     margin: 10px 0px;
-    align-self: flex-end; /* Align to the bottom */
+    align-self: flex-end;
 }
 .food-item-img-container{
     position: relative;
@@ -82,44 +83,47 @@
         font-size: 11px;
     }
     .food-item-info {
-        height: 180px; /* Adjust for responsiveness */
+        height: 180px;
     }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 770px) {
     .food-item {
-        width:80%;
+        width: 80%;
         margin: 5px auto;
         box-shadow: 2px 2px 5px #00000015;    
     }
-    .food-item-name-rating p {
+    .food-item-image{
+        width: 100%;
+    }
+    .food-item-name p {
         font-size: 16px; 
     }
     .food-item-desc {
         font-size: 10px;
     }
     .food-item-price {
-        font-size: 20px;
+        font-size: 15px;
     }
     .food-item-info {
-        height: 160px; /* Adjust for responsiveness */
+        height: 160px;
     }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 480px) {
     .food-item {
-        width:60%;
+        width: 90%;
         margin: 2px auto;
         box-shadow: 1px 1px 2px #00000015;  
     }
-    .food-item-name-rating p {
-        font-size: 10px; 
+    .food-item-name p {
+        font-size: 14px; 
     }
     .food-item-desc {
-        font-size: 7px;
+        font-size: 10px;
     }
     .food-item-price {
-        font-size: 13px;
+        font-size: 10px;
     }
     .food-item-counter {
         bottom: 4px;
@@ -131,6 +135,6 @@
         width: 16px;
     }
     .food-item-info {
-        height: 140px; /* Adjust for responsiveness */
+        height: 140px;
     }
 }

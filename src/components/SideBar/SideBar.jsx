@@ -20,7 +20,7 @@ const SideBar = ({ category, setCategory }) => {
 
   return (
     <div className="explore-menu">
-      <div className="navbar-logo-container">
+      <div className="logo-container">
         <Link to="/home" onClick={handleLogoClick}>
           <img src={assets.logo} alt="" className="logo" />
         </Link>
