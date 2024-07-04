@@ -48,7 +48,7 @@ const Cart = () => {
           <h2>Tổng giá đơn hàng</h2>
           <div>
             <div className="cart-total-details">
-              <p>Tổng phụ</p>
+              <p>Tổng Tiền Hàng</p>
               <p>${getTotalCartAmount()}</p>
             </div>
             <hr />
@@ -58,7 +58,7 @@ const Cart = () => {
             </div>
             <hr />
             <div className="cart-total-details">
-              <p>Tổng</p>
+              <p>Tổng Thanh Toán</p>
               <p>${getTotalCartAmount() + getTotalCartAmount() * 0.08}</p>
             </div>
           </div>

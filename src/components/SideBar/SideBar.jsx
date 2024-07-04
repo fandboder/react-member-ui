@@ -1,22 +1,27 @@
 import PropTypes from "prop-types";
-import "./ExploreMenu.css";
-import { assets } from "./../../assets/assets";
+import "./SideBar.css";
+import { assets } from "../../assets/assets";
 import { menu_list } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const ExploreMenu = ({ category, setCategory }) => {
+const SideBar = ({ category, setCategory }) => {
   const navigate = useNavigate();
 
   const handleClick = (menuName) => {
     setCategory(menuName);
-    navigate("/home"); // Navigate to home page
+    navigate("/home");
+  };
+
+  const handleLogoClick = () => {
+    setCategory("All");
+    navigate("/home");
   };
 
   return (
     <div className="explore-menu">
       <div className="navbar-logo-container">
-        <Link to="/home">
+        <Link to="/home" onClick={handleLogoClick}>
           <img src={assets.logo} alt="" className="logo" />
         </Link>
       </div>
@@ -44,9 +49,9 @@ const ExploreMenu = ({ category, setCategory }) => {
   );
 };
 
-ExploreMenu.propTypes = {
+SideBar.propTypes = {
   category: PropTypes.string.isRequired,
   setCategory: PropTypes.func.isRequired,
 };
 
-export default ExploreMenu;
+export default SideBar;

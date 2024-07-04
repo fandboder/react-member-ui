@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import ExploreMenu from "./../components/ExploreMenu/ExploreMenu";
+import SideBar from "./../components/SideBar/SideBar";
 import "./BaseLayout.css";
 
 const BaseLayout = () => {
@@ -9,7 +9,7 @@ const BaseLayout = () => {
   return (
     <main className="page-wrapper">
       <div className="sidebar">
-        <ExploreMenu category={category} setCategory={setCategory} />
+        <SideBar category={category} setCategory={setCategory} />
       </div>
       <div className="content-wrapper">
         <Outlet context={{ category }} />
