@@ -1,25 +1,36 @@
-import { Link } from "react-router-dom";
-import { assets } from "./../../assets/assets";
 import "./Welcome.css";
 
 const Welcome = () => {
   return (
-    <div className="welcome">
-      <div className="logo">
-        <img src={assets.logo} alt="" className="logo" />
+    <div className="creator">
+      <div className="c-heading">
+        <div className="c-heading__top">
+          <h2 className="text-default">Site of the Day - Jun 17, 2024</h2>
+        </div>
+        <div className="c-heading__middle">
+          <h1 className="heading-1">
+            <a
+              href="home"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Redis <span className="text-orange-500">Agency</span>
+            </a>
+          </h1>
+        </div>
+        <div className="c-heading__bottom text-lg">
+          as well know and we are very busy all days advice you. Advice you to
+          call us of before arriving
+        </div>
       </div>
-      <div className="greeting">
-        <h1>🍟 Chào mừng bạn đến với thế giới hương vị bùng nổ! 🍔</h1>
-        <p>
-          Tại SMURFF VILLAGE, từ những chiếc burger thơm lừng,
-          <br />
-          miếng gà giòn tan đến những phần khoai tây chiên vàng ruộm.
-          <br /> Hãy sẵn sàng để khơi dậy niềm đam mê ẩm thực của bạn!
-        </p>
+      <div className="center-button">
+        <a
+          href="home"
+          className="button-container rounded-lg border-2 border-solid border-orange-600"
+        >
+          ORDER NOW!
+        </a>
       </div>
-      <Link to="/home">
-        <button className="order">Hãy đặt món ngay!</button>
-      </Link>
     </div>
   );
 };
