@@ -1,6 +1,6 @@
 import "./Checkout.css";
 
-const PlaceOrder = () => {
+const Checkout = () => {
   return (
     <from className="checkout">
       <div className="checkout-left">
@@ -15,4 +15,4 @@ const PlaceOrder = () => {
   );
 };
 
-export default PlaceOrder;
+export default Checkout;

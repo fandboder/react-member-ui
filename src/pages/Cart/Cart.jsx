@@ -1,16 +1,29 @@
 import "./Cart.css";
+import PropTypes from "prop-types";
 import { useContext } from "react";
-import { StoreContext } from "./../../components/context/StoreContext";
+import { Link } from "react-router-dom";
+import { assets } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
+import { StoreContext } from "./../../components/context/StoreContext";
 
-const Cart = () => {
+const Cart = ({ setCategory }) => {
   const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
     useContext(StoreContext);
 
-  const navigate = useNavigate;
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    setCategory("All");
+    navigate("/home");
+  };
 
   return (
     <div className="cart">
+      <div className="cart-logo-container">
+        <Link to="/home" onClick={handleLogoClick}>
+          <img src={assets.logo} alt="" className="logo" />
+        </Link>
+      </div>
       <div className="cart-items">
         <div className="cart-items-title">
           <p>Món</p>
@@ -70,12 +83,15 @@ const Cart = () => {
           <p>Mã khuyến mãi</p>
           <div className="cart-promocode-input">
             <input type="text" placeholder="promo code" />
-            <button>Xác nhận</button>
           </div>
+          <button>Xác nhận</button>
         </div>
       </div>
     </div>
   );
 };
 
+Cart.propTypes = {
+  setCategory: PropTypes.func.isRequired,
+};
 export default Cart;
