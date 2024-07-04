@@ -1,16 +1,16 @@
-import "./PlaceOrder.css";
+import "./Checkout.css";
 
 const PlaceOrder = () => {
   return (
-    <from className="place-order">
-      <div className="place-order-left">
+    <from className="checkout">
+      <div className="checkout-left">
         <p className="title">Thông tin đơn hàng</p>
         <div className="multi-fields">
           <input type="text" placeholder="Name" />
         </div>
         <input type="email" placeholder="Email" />
       </div>
-      <div className="place-order-right"></div>
+      <div className="checkout-right"></div>
     </from>
   );
 };

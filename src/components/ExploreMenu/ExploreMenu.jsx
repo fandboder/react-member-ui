@@ -1,25 +1,30 @@
 import PropTypes from "prop-types";
 import "./ExploreMenu.css";
+import { assets } from "./../../assets/assets";
 import { menu_list } from "../../assets/assets";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ExploreMenu = ({ category, setCategory }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (menuName) => {
+    setCategory(menuName);
+    navigate("/home"); // Navigate to home page
+  };
+
   return (
-    <div className="explore-menu" id="explore-menu">
-      <h1>Khám phá thực đơn của chúng tôi</h1>
-      <p className="explore-menu-text">
-        Hãy cùng nhau bước vào thế giới ẩm thực phong phú và thưởng thức hương
-        vị tuyệt vời mà nó mang đến!
-      </p>
+    <div className="explore-menu">
+      <div className="navbar-logo-container">
+        <Link to="/home">
+          <img src={assets.logo} alt="" className="logo" />
+        </Link>
+      </div>
       <div className="explore-menu-list">
         {menu_list.map((item, index) => {
           return (
             <div
-              onClick={() =>
-                setCategory(
-                  /*prev*/ item.menu_name /*=>*/
-                  /*prev === item.menu_name ? "All" : item.menu_name ? "active" : ""*/
-                )
-              }
+              onClick={() => handleClick(item.menu_name)}
               key={index}
               className={`explore-menu-list-item ${
                 category === item.menu_name ? "active" : ""
@@ -28,14 +33,13 @@ const ExploreMenu = ({ category, setCategory }) => {
               <img
                 className={category === item.menu_name ? "active" : ""}
                 src={item.menu_image}
-                alt=""
+                alt={item.menu_name}
               />
               <p>{item.menu_name}</p>
             </div>
           );
         })}
       </div>
-      <hr />
     </div>
   );
 };
