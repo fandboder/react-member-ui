@@ -13,15 +13,10 @@ const SideBar = ({ category, setCategory }) => {
     navigate("/home");
   };
 
-  const handleLogoClick = () => {
-    setCategory("All");
-    navigate("/home");
-  };
-
   return (
     <div className="explore-menu">
       <div className="logo-container">
-        <Link to="/home" onClick={handleLogoClick}>
+        <Link to="/">
           <img src={assets.logo} alt="" className="logo" />
         </Link>
       </div>

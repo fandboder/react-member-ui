@@ -1,5 +1,6 @@
 import "./Welcome.css";
 import NavBar from "../../components/ui/navbar";
+import { Link } from "react-router-dom"
 
 const Welcome = () => {
   return (
@@ -28,12 +29,11 @@ const Welcome = () => {
         </div>
       </div>
       <div className="center-button">
-        <a
-          href="#"
+        <Link to="home"
           className="button-container rounded-full border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white-100"
         >
           ORDER NOW!
-        </a>
+        </Link>
       </div>
       <NavBar />
     </div>

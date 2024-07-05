@@ -28,6 +28,7 @@ export default {
         fontFamily: {
           'general': ['GeneralSans-Variable', 'sans-serif'],
           'grotesk': ['CabinetGrotesk-Variable', 'sans-serif'],
+          'satoshi': ['Satoshi-Variable', 'sans-serif']
         },
         colors: {
           'transparent': 'transparent',
