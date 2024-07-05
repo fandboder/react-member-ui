@@ -1,4 +1,5 @@
 import "./Welcome.css";
+import NavBar from "../../components/ui/navbar";
 
 const Welcome = () => {
   return (
@@ -10,11 +11,14 @@ const Welcome = () => {
         <div className="c-heading__middle">
           <h1 className="heading-1">
             <a
-              href="home"
+              href="/home"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Redis <span className="text-orange-500">Agency</span>
+              Redis{" "}
+              <mark className="rounded-md bg-white-100 text-orange-500 hover:bg-orange-500 hover:text-yellow-50">
+                Agency
+              </mark>
             </a>
           </h1>
         </div>
@@ -25,12 +29,13 @@ const Welcome = () => {
       </div>
       <div className="center-button">
         <a
-          href="home"
-          className="button-container rounded-lg border-2 border-solid border-orange-600"
+          href="#"
+          className="button-container rounded-full border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white-100"
         >
           ORDER NOW!
         </a>
       </div>
+      <NavBar />
     </div>
   );
 };

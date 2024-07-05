@@ -8,7 +8,7 @@ li {
 
 .creator {
   width: 100%;
-  font-family: apercu, sans-serif;
+  /* padding-top: 70px; */
 }
 
 .bg-logo {
@@ -25,14 +25,14 @@ li {
 .c-heading {
   text-align: center;
   color: #222;
-  padding-top: 280px;
+  padding-top: 310px;
   margin-bottom: clamp(40px, 5vw, 96px);
   position: relative;
   font-weight: 400px;
 }
 
 .c-heading__top {
-  margin-bottom: clamp(20px, 3vw, 24px);
+  margin-bottom: clamp(35px, 3vw, 24px);
 }
 
 .text-default {
@@ -42,13 +42,13 @@ li {
 
 .heading-1 {
   text-transform: uppercase;
-  font-size: clamp(42px, -6.5915492958px + 9.7183098592vw, 180px);
+  font-size:  clamp(30px, -3px + 12vw, 140px);
   line-height: 100%;
   font-weight: 900;
 }
 
 .c-heading__bottom {
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 .avatar-name__link {
@@ -76,11 +76,5 @@ li {
   text-align: center;
   padding: 20px;
   font-size: large;
-  color: #f27755;
-}
-
-.button-container:hover {
-  background-color: #f27755;
-  border-color: #f27755;
-  color: #fcf9f0;
+  font-weight: 700;
 }
