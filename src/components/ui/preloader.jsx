@@ -20,7 +20,7 @@ export default function Preloader() {
     >
       <motion.p
         className="font-bold text-2xl tracking-tight text-orange-500"
-        transition={{ duration: 1.5, delay: .15 ,ease: [0.83, 0, 0.17, 1]}}
+        transition={{ duration: 1, ease: [0.83, 0, 0.17, 1]}}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
       >
