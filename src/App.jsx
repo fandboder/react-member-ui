@@ -1,27 +1,43 @@
-import { Route, Routes } from "react-router-dom";
-//import NavBar from "./components/NavBar/NavBar";
-import Home from "./pages/Home/Home";
-import Cart from "./pages/Cart/Cart";
-import Checkout from "./pages/Checkout/Checkout";
+import Preloader from "../src/components/ui/preloader";
+import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import BaseLayout from "../src/layout/BaseLayout";
+import Home from "../src/pages/Home/Home";
+import Cart from "../src/pages/Cart/Cart";
+import Checkout from "../src/pages/Checkout/Checkout";
+import { Routes, Route } from "react-router-dom";
 import Welcome from "./pages/Welcome/Welcome";
-import BaseLayout from "./layout/BaseLayout";
-//import Footer from "./components/Footer/Footer";
+import Layout from "./layout/Layout";
 
 const App = () => {
-  //const location = useLocation();  đưa import useLocation  vào chung với route và routes
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+      window.scrollTo(0, 0);
+    }, [1100]);
+  });
 
   return (
     <>
-      {/*location.pathname !== "/" && <NavBar />*/}
-      <Routes>
-        <Route path="/" element={<Welcome />} />
-        <Route element={<BaseLayout />}>
-          <Route path="/home" element={<Home />} />
-        </Route>
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-      </Routes>
-      {/*{location.pathname !== "/" && <Footer />}*/}
+      <AnimatePresence mode="wait">
+        {isLoading && <Preloader />}
+      </AnimatePresence>
+
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Welcome />} />
+          </Route>
+          <Route path="/home" element={<BaseLayout />}>
+              <Route index element={<Home />} />
+          </Route>
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 };
