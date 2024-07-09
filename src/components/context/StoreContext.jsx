@@ -25,6 +25,13 @@ const StoreContextProvider = (props) => {
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
   };
 
+  const updateCartQuantity = (itemId, newQuantity) => {
+    setCartItems((prevCartItems) => ({
+      ...prevCartItems,
+      [itemId]: newQuantity, // Cập nhật trực tiếp số lượng
+    }));
+  };
+
   const removeFromCart = (itemId) => {
     const savedCart = localStorage.getItem("cartItems");
     const currentCart = savedCart ? JSON.parse(savedCart) : {};
@@ -53,11 +60,17 @@ const StoreContextProvider = (props) => {
     }, 0);
   };
 
+  const clearCart = () => {
+    setCartItems({});
+  };
+
   const contextValue = {
     food_list,
     cartItems,
     setCartItems,
+    clearCart,
     addToCart,
+    updateCartQuantity,
     removeFromCart,
     getTotalCartQuantity,
     getTotalCartAmount,
