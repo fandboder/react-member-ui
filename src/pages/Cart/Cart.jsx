@@ -1,21 +1,47 @@
 import "./Cart.css";
-import PropTypes from "prop-types";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { assets } from "../../assets/assets";
 import { useNavigate } from "react-router-dom";
 import { StoreContext } from "./../../components/context/StoreContext";
 
-const Cart = ({ setCategory }) => {
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
-    useContext(StoreContext);
-
+const Cart = () => {
+  const { cartItems, food_list, getTotalCartAmount } = useContext(StoreContext);
+  const [confirmRemove, setConfirmRemove] = useState(null);
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
-    setCategory("All");
     navigate("/home");
   };
+
+  const { updateCartQuantity, removeFromCart } = useContext(StoreContext);
+
+  const handleIncreaseQuantity = (id) => {
+    if (cartItems[id] >= 1) {
+      updateCartQuantity(id, cartItems[id] + 1);
+    }
+  };
+
+  const handleDecreaseQuantity = (id) => {
+    if (cartItems[id] > 1) {
+      updateCartQuantity(id, cartItems[id] - 1);
+    } else {
+      removeFromCart(id);
+    }
+  };
+
+  const handleRemoveItem = (id) => {
+    setConfirmRemove(id);
+  };
+
+  const confirmRemoveItem = (id, confirm) => {
+    if (confirm) {
+      removeFromCart(id);
+    }
+    setConfirmRemove(null);
+  };
+
+  const hasItemsInCart = Object.keys(cartItems).some((id) => cartItems[id] > 0);
 
   return (
     <div className="cart">
@@ -28,10 +54,10 @@ const Cart = ({ setCategory }) => {
         <div className="cart-items-title">
           <p>Món</p>
           <p>Tên món</p>
-          <p>Giá</p>
+          <p>Đơn giá</p>
           <p>Số lượng</p>
-          <p>Tổng giá</p>
-          <p>Bỏ</p>
+          <p>Số tiền</p>
+          <p>Xóa</p>
         </div>
         <br />
         <hr />
@@ -43,10 +69,21 @@ const Cart = ({ setCategory }) => {
                   <img src={item.image} alt="" />
                   <p>{item.name}</p>
                   <p>${item.price}</p>
-                  <p>{cartItems[item._id]}</p>
-                  <p>${item.price * cartItems[item._id]}</p>
-                  <p onClick={() => removeFromCart(item._id)} className="cross">
-                    x
+                  <div className="quantity-control">
+                    <button onClick={() => handleDecreaseQuantity(item._id)}>
+                      -
+                    </button>
+                    <p>{cartItems[item._id]}</p>
+                    <button onClick={() => handleIncreaseQuantity(item._id)}>
+                      +
+                    </button>
+                  </div>
+                  <p>{item.price * cartItems[item._id]} vnd</p>
+                  <p
+                    onClick={() => handleRemoveItem(item._id)}
+                    className="cross"
+                  >
+                    X
                   </p>
                 </div>
                 <hr />
@@ -56,6 +93,17 @@ const Cart = ({ setCategory }) => {
           return null;
         })}
       </div>
+      {confirmRemove && (
+        <div className="confirm-remove-popup">
+          <p>Bạn muốn xóa món này khỏi giỏ hàng?</p>
+          <button onClick={() => confirmRemoveItem(confirmRemove, true)}>
+            Có
+          </button>
+          <button onClick={() => confirmRemoveItem(confirmRemove, false)}>
+            Không
+          </button>
+        </div>
+      )}
       <div className="cart-bottom">
         <div className="cart-total">
           <h2>Tổng giá đơn hàng</h2>
@@ -67,15 +115,19 @@ const Cart = ({ setCategory }) => {
             <hr />
             <div className="cart-total-details">
               <p>Thuế (8%)</p>
-              <p>${getTotalCartAmount() * 0.08}</p>
+              <p>${(getTotalCartAmount() * 0.08).toFixed(2)}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Tổng Thanh Toán</p>
-              <p>${getTotalCartAmount() + getTotalCartAmount() * 0.08}</p>
+              <p>${(getTotalCartAmount() * 1.08).toFixed(2)} vnd</p>
             </div>
           </div>
-          <button onClick={() => navigate("/order")}>
+          <button
+            onClick={() => navigate("/checkout")}
+            disabled={!hasItemsInCart}
+            className={!hasItemsInCart ? "disabled" : ""}
+          >
             Tiến hành thanh toán
           </button>
         </div>
@@ -91,7 +143,4 @@ const Cart = ({ setCategory }) => {
   );
 };
 
-Cart.propTypes = {
-  setCategory: PropTypes.func.isRequired,
-};
 export default Cart;
