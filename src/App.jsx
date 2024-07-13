@@ -1,14 +1,16 @@
-import Preloader from "../src/components/ui/preloader";
-import { AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
-import { BrowserRouter } from "react-router-dom";
-import BaseLayout from "../src/layout/BaseLayout";
+import Layout from "./layout/Layout";
 import Home from "../src/pages/Home/Home";
 import Cart from "../src/pages/Cart/Cart";
-import Checkout from "../src/pages/Checkout/Checkout";
-import { Routes, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Welcome from "./pages/Welcome/Welcome";
-import Layout from "./layout/Layout";
+import { AnimatePresence } from "framer-motion";
+import PopupLayout from "./layout/PopupLayout";
+import BaseLayout from "../src/layout/BaseLayout";
+import QrCheckout from "./pages/Checkout/QrCheckout";
+import Checkout from "../src/pages/Checkout/Checkout";
+import Preloader from "../src/components/ui/preloader";
+import CashCheckout from "./pages/Checkout/CashCheckout";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -32,10 +34,47 @@ const App = () => {
             <Route index element={<Welcome />} />
           </Route>
           <Route path="/home" element={<BaseLayout />}>
-              <Route index element={<Home />} />
+            <Route
+              index
+              element={
+                <PopupLayout>
+                  <Home />
+                </PopupLayout>
+              }
+            />
           </Route>
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route
+            path="/cart"
+            element={
+              <PopupLayout>
+                <Cart />
+              </PopupLayout>
+            }
+          />
+          <Route
+            path="/checkout"
+            element={
+              <PopupLayout>
+                <Checkout />
+              </PopupLayout>
+            }
+          />
+          <Route
+            path="/cash-checkout"
+            element={
+              <PopupLayout>
+                <CashCheckout />
+              </PopupLayout>
+            }
+          />
+          <Route
+            path="/qr-checkout"
+            element={
+              <PopupLayout>
+                <QrCheckout />
+              </PopupLayout>
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>
