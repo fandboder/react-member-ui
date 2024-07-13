@@ -32,7 +32,6 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Welcome />} />
-            {/* Không cần IdleTimeoutPopup ở đây nữa */}
           </Route>
           <Route path="/home" element={<BaseLayout />}>
             <Route
