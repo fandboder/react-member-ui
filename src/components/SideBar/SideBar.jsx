@@ -24,18 +24,18 @@ const SideBar = ({ category, setCategory }) => {
         {menu_list.map((item, index) => {
           return (
             <div
-              onClick={() => handleClick(item.menu_name)}
+              onClick={() => handleClick(item.categoryName)}
               key={index}
               className={`explore-menu-list-item ${
-                category === item.menu_name ? "active" : ""
+                category === item.categoryName ? "active" : ""
               }`}
             >
               <img
-                className={category === item.menu_name ? "active" : ""}
+                className={category === item.categoryName ? "active" : ""}
                 src={item.menu_image}
-                alt={item.menu_name}
+                alt={item.categoryName}
               />
-              <p>{item.menu_name}</p>
+              <p>{item.categoryName}</p>
             </div>
           );
         })}

@@ -1,47 +1,36 @@
 import "./Cart.css";
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { assets } from "../../assets/assets";
-import { useNavigate } from "react-router-dom";
-import { StoreContext } from "./../../components/context/StoreContext";
+import { StoreContext } from "../../components/context/StoreContext";
 
 const Cart = () => {
-  const { cartItems, food_list, getTotalCartAmount } = useContext(StoreContext);
-  const [confirmRemove, setConfirmRemove] = useState(null);
+  const {
+    food_list,
+    getTotalCartAmount,
+    handleIncreaseQuantity,
+    handleDecreaseQuantity,
+    handleRemoveItem,
+    confirmRemoveItem,
+    cartItems,
+    confirmRemove,
+  } = useContext(StoreContext);
+
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
     navigate("/home");
   };
 
-  const { updateCartQuantity, removeFromCart } = useContext(StoreContext);
-
-  const handleIncreaseQuantity = (id) => {
-    if (cartItems[id] >= 1) {
-      updateCartQuantity(id, cartItems[id] + 1);
-    }
+  const calculateItemTotal = (item, cartItemKey) => {
+    const basePrice = item.basePrice;
+    const selectedToppings = cartItems[cartItemKey]?.selectedToppings || [];
+    const toppingsPrice = selectedToppings.reduce((total, toppingId) => {
+      const topping = item.topping.find((t) => t.id === toppingId);
+      return total + (topping ? topping.basePrice : 0);
+    }, 0);
+    return (basePrice + toppingsPrice) * cartItems[cartItemKey]?.quantity;
   };
-
-  const handleDecreaseQuantity = (id) => {
-    if (cartItems[id] > 1) {
-      updateCartQuantity(id, cartItems[id] - 1);
-    } else {
-      removeFromCart(id);
-    }
-  };
-
-  const handleRemoveItem = (id) => {
-    setConfirmRemove(id);
-  };
-
-  const confirmRemoveItem = (id, confirm) => {
-    if (confirm) {
-      removeFromCart(id);
-    }
-    setConfirmRemove(null);
-  };
-
-  const hasItemsInCart = Object.keys(cartItems).some((id) => cartItems[id] > 0);
 
   return (
     <div className="cart">
@@ -52,8 +41,8 @@ const Cart = () => {
       </div>
       <div className="cart-items">
         <div className="cart-items-title">
-          <p>Món</p>
           <p>Tên món</p>
+          <p>Topping</p>
           <p>Đơn giá</p>
           <p>Số lượng</p>
           <p>Số tiền</p>
@@ -61,28 +50,34 @@ const Cart = () => {
         </div>
         <br />
         <hr />
-        {food_list.map((item) => {
-          if (cartItems[item._id] > 0) {
+        {Object.keys(cartItems).map((key) => {
+          const item = food_list.find((food) => food.id === key.split("-")[0]);
+          if (item && cartItems[key].quantity > 0) {
             return (
-              <div key={item._id}>
-                <div className="cart-items-title cart-items-item">
-                  <img src={item.image} alt="" />
+              <div key={key}>
+                <div className="cart-items-item">
                   <p>{item.name}</p>
-                  <p>${item.price}</p>
+                  <div className="cart-item-toppings">
+                    {cartItems[key].selectedToppings &&
+                      cartItems[key].selectedToppings.map((toppingId) => {
+                        const toppingName = item.topping.find(
+                          (t) => t.id === toppingId
+                        )?.name;
+                        return <p key={toppingId}>{toppingName}</p>;
+                      })}
+                  </div>
+                  <p>{item.basePrice} vnd</p>
                   <div className="quantity-control">
-                    <button onClick={() => handleDecreaseQuantity(item._id)}>
+                    <button onClick={() => handleDecreaseQuantity(key)}>
                       -
                     </button>
-                    <p>{cartItems[item._id]}</p>
-                    <button onClick={() => handleIncreaseQuantity(item._id)}>
+                    <p>{cartItems[key].quantity}</p>
+                    <button onClick={() => handleIncreaseQuantity(key)}>
                       +
                     </button>
                   </div>
-                  <p>{item.price * cartItems[item._id]} vnd</p>
-                  <p
-                    onClick={() => handleRemoveItem(item._id)}
-                    className="cross"
-                  >
+                  <p>{calculateItemTotal(item, key)} vnd</p>
+                  <p onClick={() => handleRemoveItem(key)} className="cross">
                     X
                   </p>
                 </div>
@@ -110,23 +105,23 @@ const Cart = () => {
           <div>
             <div className="cart-total-details">
               <p>Tổng Tiền Hàng</p>
-              <p>${getTotalCartAmount()}</p>
+              <p>{getTotalCartAmount()} vnd</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Thuế (8%)</p>
-              <p>${(getTotalCartAmount() * 0.08).toFixed(2)}</p>
+              <p>{getTotalCartAmount() * 0.08} vnd</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Tổng Thanh Toán</p>
-              <p>${(getTotalCartAmount() * 1.08).toFixed(2)} vnd</p>
+              <p>{getTotalCartAmount() * 0.08 + getTotalCartAmount()} vnd</p>
             </div>
           </div>
           <button
             onClick={() => navigate("/checkout")}
-            disabled={!hasItemsInCart}
-            className={!hasItemsInCart ? "disabled" : ""}
+            disabled={Object.keys(cartItems).length === 0}
+            className={Object.keys(cartItems).length === 0 ? "disabled" : ""}
           >
             Tiến hành thanh toán
           </button>

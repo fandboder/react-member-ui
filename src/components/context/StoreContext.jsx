@@ -10,70 +10,139 @@ const StoreContextProvider = (props) => {
     return savedCart ? JSON.parse(savedCart) : {};
   });
 
+  const [confirmRemove, setConfirmRemove] = useState(null);
+
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (itemId) => {
-    const savedCart = localStorage.getItem("cartItems");
-    const currentCart = savedCart ? JSON.parse(savedCart) : {};
-    const updatedCart = {
-      ...currentCart,
-      [itemId]: (currentCart[itemId] || 0) + 1,
-    };
-    setCartItems(updatedCart);
-    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+  const addToCart = (itemId, selectedToppings = []) => {
+    setCartItems((prevCartItems) => {
+      const cartItemKey = `${itemId}-${selectedToppings.join(",")}`;
+      const product = food_list.find((product) => product.id === itemId);
+
+      const newCartItems = {
+        ...prevCartItems,
+        [cartItemKey]: {
+          id: itemId,
+          name: product.name,
+          price: product.basePrice,
+          quantity: (prevCartItems[cartItemKey]?.quantity || 0) + 1,
+          selectedToppings: selectedToppings,
+        },
+      };
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      return newCartItems;
+    });
   };
 
-  const updateCartQuantity = (itemId, newQuantity) => {
-    setCartItems((prevCartItems) => ({
-      ...prevCartItems,
-      [itemId]: newQuantity, // Cập nhật trực tiếp số lượng
-    }));
+  const removeFromCart = (itemId, selectedToppings = []) => {
+    setCartItems((prevCartItems) => {
+      const cartItemKey = `${itemId}-${selectedToppings.join(",")}`;
+      const newCartItems = { ...prevCartItems };
+      delete newCartItems[cartItemKey];
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      return newCartItems;
+    });
   };
 
-  const removeFromCart = (itemId) => {
-    const savedCart = localStorage.getItem("cartItems");
-    const currentCart = savedCart ? JSON.parse(savedCart) : {};
-    const newCart = { ...currentCart };
-    if (newCart[itemId] > 0) {
-      newCart[itemId] -= 1;
-      if (newCart[itemId] === 0) {
-        delete newCart[itemId];
-      }
-    }
-    setCartItems(newCart);
-    localStorage.setItem("cartItems", JSON.stringify(newCart));
+  const updateCartQuantity = (itemId, quantity) => {
+    setCartItems((prevCartItems) => {
+      const newCartItems = {
+        ...prevCartItems,
+        [itemId]: { ...prevCartItems[itemId], quantity },
+      };
+      localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+      return newCartItems;
+    });
   };
 
   const getTotalCartQuantity = () => {
     return Object.values(cartItems).reduce(
-      (total, quantity) => total + quantity,
+      (total, item) => total + item.quantity,
       0
     );
   };
 
   const getTotalCartAmount = () => {
-    return Object.keys(cartItems).reduce((total, itemId) => {
-      const itemInfo = food_list.find((product) => product._id === itemId);
-      return total + (itemInfo.price * cartItems[itemId] || 0);
+    return Object.values(cartItems).reduce((total, item) => {
+      const toppingPrices = item.selectedToppings.reduce((sum, toppingId) => {
+        const topping = food_list
+          .find((p) => p.id === item.id)
+          ?.topping.find((t) => t.id === toppingId);
+        return sum + (topping?.basePrice || 0);
+      }, 0);
+      return total + (item.price + toppingPrices) * item.quantity;
     }, 0);
+  };
+
+  const handleIncreaseQuantity = (id) => {
+    setCartItems((prevCartItems) => {
+      const updatedCartItems = {
+        ...prevCartItems,
+        [id]: {
+          ...prevCartItems[id],
+          quantity: prevCartItems[id].quantity + 1,
+        },
+      };
+      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+      return updatedCartItems;
+    });
+  };
+
+  const handleDecreaseQuantity = (id) => {
+    setCartItems((prevCartItems) => {
+      if (prevCartItems[id].quantity > 1) {
+        const updatedCartItems = {
+          ...prevCartItems,
+          [id]: {
+            ...prevCartItems[id],
+            quantity: prevCartItems[id].quantity - 1,
+          },
+        };
+        localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+        return updatedCartItems;
+      } else {
+        handleRemoveItem(id);
+      }
+    });
+  };
+
+  const handleRemoveItem = (id) => {
+    setConfirmRemove(id);
+  };
+
+  const confirmRemoveItem = (id, confirm) => {
+    if (confirm) {
+      setCartItems((prevCartItems) => {
+        const updatedCartItems = { ...prevCartItems };
+        delete updatedCartItems[id];
+        localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+        return updatedCartItems;
+      });
+    }
+    setConfirmRemove(null);
   };
 
   const clearCart = () => {
     setCartItems({});
+    localStorage.removeItem("cartItems");
   };
 
   const contextValue = {
     food_list,
     cartItems,
-    setCartItems,
-    clearCart,
+    confirmRemove,
     addToCart,
-    updateCartQuantity,
     removeFromCart,
+    updateCartQuantity,
     getTotalCartQuantity,
     getTotalCartAmount,
+    handleIncreaseQuantity,
+    handleDecreaseQuantity,
+    handleRemoveItem,
+    confirmRemoveItem,
+    clearCart,
   };
 
   return (

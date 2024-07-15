@@ -17,7 +17,6 @@ const CashCheckout = () => {
 
   const handleClosePopup = useCallback(() => {
     clearCart();
-    localStorage.removeItem("cartItems");
     navigate("/");
     window.location.reload();
   }, [clearCart, navigate]);
@@ -64,7 +63,6 @@ const CashCheckout = () => {
             </div>
           </div>
         )}
-        v
         <h3>Quý khách vui lòng xác nhận tiến hành thanh toán hoặc quay lại.</h3>
         <button
           onClick={() => navigate("/checkout")}
