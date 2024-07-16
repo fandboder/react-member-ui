@@ -1,4 +1,3 @@
-import "./Home.css";
 import { useOutletContext } from "react-router-dom";
 import FoodDisplay from "../../components/FoodDisplay/FoodDisplay";
 

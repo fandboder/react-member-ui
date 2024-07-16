@@ -1,12 +1,12 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { assets } from "./../../assets/assets";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const navBar = useRef(null);
   const cta = useRef(null);
-  const tl = gsap.timeline();
+  const tl = gsap.timeline({ paused: true });
 
   useEffect(() => {
     tl.to(navBar.current, {
@@ -14,8 +14,8 @@ export default function NavBar() {
       duration: 2.75,
       delay: 0.5,
       ease: "power4.inOut",
-    });
-  });
+    }).play();
+  }, []);
 
   return (
     <header
@@ -23,10 +23,11 @@ export default function NavBar() {
       className="fixed top-0 z-50 flex w-full -translate-y-full items-center justify-between bg-secondary-100 px-5 py-3"
     >
       <a href="/home" aria-label="Logo" className="z-50">
-        <img src={assets.logo} className="logo"/>
+        <img src={assets.logo} className="logo" />
       </a>
       <nav className=" space-x-7 font-grotesk text-body-3 sm:block">
-        <Link to="home"
+        <Link
+          to="home"
           ref={cta}
           className="button group relative hover:bg-transparent"
         >

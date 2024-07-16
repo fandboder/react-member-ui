@@ -2,7 +2,6 @@ import "./Welcome.css";
 import NavBar from "../../components/ui/navbar";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"; // Import useState and useEffect
-import StickyFooter from "../../components/sticky/StickyFooter";
 
 const Welcome = () => {
   const [currentDate, setCurrentDate] = useState(new Date()); // State for current date/time
@@ -35,7 +34,7 @@ const Welcome = () => {
               <a href="/home" target="_blank" rel="noopener noreferrer">
                 Fast{" "}
                 <mark className="rounded-md bg-white-100 text-orange-500 hover:bg-orange-500 hover:text-yellow-50">
-                  Agency
+                  Food
                 </mark>
               </a>
             </h1>
@@ -55,7 +54,6 @@ const Welcome = () => {
         </div>
         <NavBar />
       </div>
-      <StickyFooter />
     </>
   );
 };
