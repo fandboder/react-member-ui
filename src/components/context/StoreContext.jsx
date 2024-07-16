@@ -103,7 +103,11 @@ const StoreContextProvider = (props) => {
         localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
         return updatedCartItems;
       } else {
-        handleRemoveItem(id);
+        // Gọi handleRemoveItem khi số lượng giảm về 0
+        const updatedCartItems = { ...prevCartItems };
+        delete updatedCartItems[id];
+        localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+        return updatedCartItems;
       }
     });
   };

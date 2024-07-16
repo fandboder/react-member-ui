@@ -5,7 +5,7 @@ import DetailPopup from "./DetailPopup/DetailPopup ";
 import { StoreContext } from "../context/StoreContext";
 
 const FoodItem = ({ id, name, price, description, image, topping }) => {
-  const { cartItems, addToCart } = useContext(StoreContext); // Removed removeFromCart
+  const { cartItems, addToCart } = useContext(StoreContext);
   const [showDetailPopup, setShowDetailPopup] = useState(false);
 
   const handleAddToCart = (id) => {

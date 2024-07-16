@@ -7,7 +7,7 @@ export default function Preloader() {
     },
     exit: {
       y: "-100vh",
-      transition: { duration: 1, ease: [0.83, 0, 0.17, 1] },
+      transition: { duration: 0.8, ease: [0.83, 0, 0.17, 0.5] },
     },
   };
 
@@ -16,11 +16,11 @@ export default function Preloader() {
       variants={slideUp}
       initial="initial"
       exit="exit"
-      className="h-screen w-screen z-[999] fixed top-0 left-0 bg-white-100 flex justify-center items-center"
+      className="fixed left-0 top-0 z-[999] flex h-screen w-screen items-center justify-center bg-white-100"
     >
       <motion.p
-        className="font-bold text-2xl tracking-tight text-orange-500"
-        transition={{ duration: 1, ease: [0.83, 0, 0.17, 1]}}
+        className="text-2xl font-bold tracking-tight text-orange-500"
+        transition={{ duration: 1, ease: [0.83, 0, 0.17, 0.5] }}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
       >

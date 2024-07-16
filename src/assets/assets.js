@@ -3,7 +3,7 @@ import logo from './logo.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
 import burger from './burger.png'
-import combo from './combo.png'
+import topping from './topping.png'
 import kid from './kid.png'
 import drinks from './drinks.png'
 import chicken from './chicken.png'
@@ -86,385 +86,208 @@ export const assets = {
 
 export const menu_list = [
     { categoryId: 1, categoryName: "Burger", menu_image: burger },
-    { categoryId: 2, categoryName: "Gà", menu_image: chicken }, // Sửa tên danh mục
+    { categoryId: 2, categoryName: "Gà", menu_image: chicken },
     { categoryId: 3, categoryName: "Salad", menu_image: salad },
-    { categoryId: 4, categoryName: "Bữa Ăn Vui Vẻ", menu_image: kid }, // Sửa tên danh mục
-    { categoryId: 5, categoryName: "Bánh", menu_image: cake }, // Sửa tên danh mục
-    { categoryId: 6, categoryName: "Nước Uống", menu_image: drinks }, // Sửa tên danh mục
-    { categoryId: 7, categoryName: "Điểm Tâm", menu_image: breakfast }, // Sửa tên danh mục
-    { categoryId: 8, categoryName: "Combo", menu_image: combo },
+    { categoryId: 4, categoryName: "Bữa Ăn Vui Vẻ", menu_image: kid },
+    { categoryId: 5, categoryName: "Bánh", menu_image: cake },
+    { categoryId: 6, categoryName: "Nước Uống", menu_image: drinks },
+    { categoryId: 7, categoryName: "Điểm Tâm", menu_image: breakfast },
+    { categoryId: 8, categoryName: "Món thêm", menu_image: topping },
   ];
   
-
   export const food_list = [
     {
-        id: "1",
-        name: "Greek salad",
-        image: 'https://example.com/food_1.png',
-        basePrice: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Salad",
-        topping: [
-            {
-                id: "1",
-                name: "Thêm rau",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Thêm pho-mát",
-                basePrice: 15
-            },
-            {
-                id: "3",
-                name: "Không hành",
-                basePrice: 0
-            }
-        ]
+      id: "1",
+      name: "Greek salad",
+      image: 'https://example.com/food_1.png',
+      basePrice: 12,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Salad",
+      topping: [
+        { id: "1", name: "Thêm rau", categoryId: "8", basePrice: 10 },
+        { id: "2", name: "Thêm pho-mát", categoryId: "8", basePrice: 15 }
+      ]
     },
     {
-        id: "2",
-        name: "Veg salad",
-        image: 'https://example.com/food_2.png',
-        basePrice: 18,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Salad",
-        topping: [
-            {
-                id: "1",
-                name: "Thêm sốt",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không pho-mát",
-                basePrice: 0
-            }
-        ]
+      id: "2",
+      name: "Veg salad",
+      image: 'https://example.com/food_2.png',
+      basePrice: 18,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Salad",
+      topping: [
+        { id: "3", name: "Thêm sốt", categoryId: "8", basePrice: 10 }
+      ]
     },
     {
-        id: "3",
-        name: "Clover Salad",
-        image: 'https://example.com/food_3.png',
-        basePrice: 16,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Salad",
-        topping: [
-            {
-                id: "1",
-                name: "Thêm sốt",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không pho-mát",
-                basePrice: 0
-            }
-        ]
+      id: "3",
+      name: "Clover Salad",
+      image: 'https://example.com/food_3.png',
+      basePrice: 16,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Salad",
+      topping: [
+        { id: "3", name: "Thêm sốt", categoryId: "8", basePrice: 10 }
+      ]
     },
     {
-        id: "4",
-        name: "Chicken Salad",
-        image: 'https://example.com/food_4.png',
-        basePrice: 24,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Salad",
-        topping: [
-            {
-                id: "1",
-                name: "Gà nướng",
-                basePrice: 20
-            },
-            {
-                id: "2",
-                name: "Không hành",
-                basePrice: 0
-            }
-        ]
+      id: "4",
+      name: "Chicken Salad",
+      image: 'https://example.com/food_4.png',
+      basePrice: 24,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Salad",
+      topping: [
+        { id: "5", name: "Gà nướng", categoryId: "8", basePrice: 20 }
+      ]
     },
     {
-        id: "5",
-        name: "Burger 2 Lớp Bò Phô Mai",
-        image: 'https://example.com/two_beef_cheese.png',
-        basePrice: 35,
-        description: "Burger Có 2 Lớp Bò Và Phô Mai",
-        category: "Burger",
-        topping: [
-            {
-                id: "1",
-                name: "Sốt đậu cay",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Sốt đậu không cay",
-                basePrice: 5
-            },
-            {
-                id: "3",
-                name: "Không rau",
-                basePrice: 0
-            }
-        ]
+      id: "5",
+      name: "Burger 2 Lớp Bò Phô Mai",
+      image: 'https://example.com/two_beef_cheese.png',
+      basePrice: 35,
+      description: "Burger Có 2 Lớp Bò Và Phô Mai",
+      category: "Burger",
+      topping: [
+        { id: "6", name: "Sốt đậu cay", categoryId: "8", basePrice: 5 },
+        { id: "7", name: "Sốt đậu không cay", categoryId: "8", basePrice: 5 }
+      ]
     },
     {
-        id: "6",
-        name: "Burger Bò Phô Mai Đặc Biệt",
-        image: 'https://example.com/special_beef.png',
-        basePrice: 40,
-        description: "Bò Phô Mai Đặc biệt",
-        category: "Burger",
-        topping: [
-            {
-                id: "1",
-                name: "Sốt đậu cay",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Phô mai thêm",
-                basePrice: 15
-            },
-            {
-                id: "3",
-                name: "Không rau",
-                basePrice: 0
-            }
-        ]
+      id: "6",
+      name: "Burger Bò Phô Mai Đặc Biệt",
+      image: 'https://example.com/special_beef.png',
+      basePrice: 40,
+      description: "Bò Phô Mai Đặc biệt",
+      category: "Burger",
+      topping: [
+        { id: "6", name: "Sốt đậu cay", categoryId: "8", basePrice: 5 },
+        { id: "2", name: "Thêm pho-mát", categoryId: "8", basePrice: 15 }
+      ]
     },
     {
-        id: "7",
-        name: "Burger Bò Miếng Lớn Phô Mai",
-        image: 'https://example.com/big_beef_cheese.png',
-        basePrice: 20,
-        description: "Burger Bò Miếng Lớn Và Phô Mai",
-        category: "Burger",
-        topping: [
-            {
-                id: "1",
-                name: "Sốt cà chua",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Phô mai thêm",
-                basePrice: 15
-            },
-            {
-                id: "3",
-                name: "Không rau",
-                basePrice: 0
-            }
-        ]
+      id: "7",
+      name: "Burger Bò Miếng Lớn Phô Mai",
+      image: 'https://example.com/big_beef_cheese.png',
+      basePrice: 20,
+      description: "Burger Bò Miếng Lớn Và Phô Mai",
+      category: "Burger",
+      topping: [
+        { id: "7", name: "Sốt cà chua", categoryId: "8", basePrice: 5 },
+        { id: "2", name: "Thêm pho-mát", categoryId: "8", basePrice: 15 }
+      ]
     },
     {
-        id: "8",
-        name: "Burber Big Mac",
-        image: 'https://example.com/big_mac.png',
-        basePrice: 15,
-        description: "Burger 2 Lớp Bò, Phô-Mai, Rau Tươi Và Sốt Big Mac.",
-        category: "Burger",
-        topping: [
-            {
-                id: "1",
-                name: "Sốt Big Mac",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Không dưa leo",
-                basePrice: 0
-            },
-            {
-                id: "3",
-                name: "Không hành",
-                basePrice: 0
-            }
-        ]
+      id: "8",
+      name: "Burber Big Mac",
+      image: 'https://example.com/big_mac.png',
+      basePrice: 15,
+      description: "Burger 2 Lớp Bò, Phô-Mai, Rau Tươi Và Sốt Big Mac.",
+      category: "Burger",
+      topping: [
+        { id: "8", name: "Sốt Big Mac", categoryId: "8", basePrice: 5 }
+      ]
     },
     {
-        id: "9",
-        name: "Burger Bò Hoàng Gia Đặc Biệt",
-        image: 'https://example.com/special_royal.png',
-        basePrice: 14,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Burger",
-        topping: [
-            {
-                id: "1",
-                name: "Sốt cà chua",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Phô mai thêm",
-                basePrice: 15
-            },
-            {
-                id: "3",
-                name: "Không rau",
-                basePrice: 0
-            }
-        ]
+      id: "9",
+      name: "Burger Bò Hoàng Gia Đặc Biệt",
+      image: 'https://example.com/special_royal.png',
+      basePrice: 14,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Burger",
+      topping: [
+        { id: "7", name: "Sốt cà chua", categoryId: "8", basePrice: 5 },
+        { id: "2", name: "Thêm pho-mát", categoryId: "8", basePrice: 15 }
+      ]
     },
     {
-        id: "10",
-        name: "Fruit Ice Cream",
-        image: 'https://example.com/food_10.png',
-        basePrice: 22,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Deserts",
-        topping: [
-            {
-                id: "1",
-                name: "Thêm trái cây",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không sô-cô-la",
-                basePrice: 0
-            }
-        ]
+      id: "10",
+      name: "Fruit Ice Cream",
+      image: 'https://example.com/food_10.png',
+      basePrice: 22,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Deserts",
+      topping: [
+        { id: "9", name: "Thêm trái cây", categoryId: "8", basePrice: 10 }
+      ]
     },
     {
-        id: "11",
-        name: "Jar Ice Cream",
-        image: 'https://example.com/food_11.png',
-        basePrice: 10,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Deserts",
-        topping: [
-            {
-                id: "1",
-                name: "Không sô-cô-la",
-                basePrice: 0
-            },
-            {
-                id: "2",
-                name: "Thêm dâu tây",
-                basePrice: 10
-            }
-        ]
+      id: "11",
+      name: "Jar Ice Cream",
+      image: 'https://example.com/food_11.png',
+      basePrice: 10,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Deserts",
+      topping: [
+        { id: "10", name: "Thêm sô-cô-la", categoryId: "8", basePrice: 0 },
+        { id: "11", name: "Thêm dâu tây", categoryId: "8", basePrice: 10 }
+      ]
     },
     {
-        id: "12",
-        name: "Vanilla Ice Cream",
-        image: 'https://example.com/food_12.png',
-        basePrice: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Deserts",
-        topping: [
-            {
-                id: "1",
-                name: "Thêm sô-cô-la",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Thêm dâu tây",
-                basePrice: 10
-            }
-        ]
+      id: "12",
+      name: "Vanilla Ice Cream",
+      image: 'https://example.com/food_12.png',
+      basePrice: 12,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Deserts",
+      topping: [
+        { id: "10", name: "Thêm sô-cô-la", categoryId: "8", basePrice: 10 },
+        { id: "11", name: "Thêm dâu tây", categoryId: "8", basePrice: 10 }
+      ]
     },
     {
-        id: "13",
-        name: "Chicken Sandwich",
-        image: 'https://example.com/food_13.png',
-        basePrice: 12,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Sandwich",
-        topping: [
-            {
-                id: "1",
-                name: "Gà nướng",
-                basePrice: 20
-            },
-            {
-                id: "2",
-                name: "Không sốt mayo",
-                basePrice: 0
-            }
-        ]
+      id: "13",
+      name: "Chicken Sandwich",
+      image: 'https://example.com/food_13.png',
+      basePrice: 12,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Sandwich",
+      topping: [
+        { id: "5", name: "Gà nướng", categoryId: "8", basePrice: 20 }
+      ]
     },
     {
-        id: "14",
-        name: "Vegan Sandwich",
-        image: 'https://example.com/food_14.png',
-        basePrice: 18,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Sandwich",
-        topping: [
-            {
-                id: "1",
-                name: "Thêm bơ",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không pho-mát",
-                basePrice: 0
-            }
-        ]
+      id: "14",
+      name: "Vegan Sandwich",
+      image: 'https://example.com/food_14.png',
+      basePrice: 18,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Sandwich",
+      topping: [
+        { id: "12", name: "Thêm bơ", categoryId: "8", basePrice: 10 }
+      ]
     },
     {
-        id: "15",
-        name: "Grilled Sandwich",
-        image: 'https://example.com/food_15.png',
-        basePrice: 16,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Sandwich",
-        topping: [
-            {
-                id: "1",
-                name: "Thêm pho-mát",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không cà chua",
-                basePrice: 0
-            }
-        ]
+      id: "15",
+      name: "Grilled Sandwich",
+      image: 'https://example.com/food_15.png',
+      basePrice: 16,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Sandwich",
+      topping: [
+        { id: "2", name: "Thêm pho-mát", categoryId: "8", basePrice: 10 }
+      ]
     },
     {
-        id: "16",
-        name: "Bread Sandwich",
-        image: 'https://example.com/food_16.png',
-        basePrice: 24,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Sandwich",
-        topping: [
-            {
-                id: "1",
-                name: "Bánh mì ngũ cốc nguyên hạt",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không sốt mayo",
-                basePrice: 0
-            }
-        ]
+      id: "16",
+      name: "Bread Sandwich",
+      image: 'https://example.com/food_16.png',
+      basePrice: 24,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Sandwich",
+      topping: [
+        { id: "13", name: "Bánh mì ngũ cốc nguyên hạt", categoryId: "8", basePrice: 10 }
+      ]
     },
     {
-        id: "17",
-        name: "Cup Cake",
-        image: 'https://example.com/food_17.png',
-        basePrice: 14,
-        description: "Food provides essential nutrients for overall health and well-being",
-        category: "Cake",
-        topping: [
-            {
-                id: "1",
-                name: "Thêm kem",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không sô-cô-la",
-                basePrice: 0
-            }
+      id: "17",
+      name: "Cup Cake",
+      image: 'https://example.com/food_17.png',
+      basePrice: 14,
+      description: "Food provides essential nutrients for overall health and well-being",
+      category: "Cake",
+      topping: [
+            { id: "14", name: "Thêm kem", categoryId: "8", basePrice: 10 }
         ]
     },
     {
@@ -475,16 +298,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Cake",
         topping: [
-            {
-                id: "1",
-                name: "Thêm kem",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không sô-cô-la",
-                basePrice: 0
-            }
+            { id: "14", name: "Thêm kem", categoryId: "8", basePrice: 10 }
         ]
     },
     {
@@ -495,16 +309,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Cake",
         topping: [
-            {
-                id: "1",
-                name: "Thêm kem",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không bơ đậu phộng",
-                basePrice: 0
-            }
+            { id: "14", name: "Thêm kem", categoryId: "8", basePrice: 10 }
         ]
     },
     {
@@ -515,16 +320,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Cake",
         topping: [
-            {
-                id: "1",
-                name: "Không sô-cô-la",
-                basePrice: 0
-            },
-            {
-                id: "2",
-                name: "Thêm kem",
-                basePrice: 10
-            }
+            { id: "14", name: "Thêm kem", categoryId: "8", basePrice: 10 }
         ]
     },
     {
@@ -535,16 +331,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Pure Veg",
         topping: [
-            {
-                id: "1",
-                name: "Thêm tỏi",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Không bơ",
-                basePrice: 0
-            }
+            { id: "15", name: "Thêm rau", categoryId: "8", basePrice: 5 }
         ]
     },
     {
@@ -555,16 +342,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Pure Veg",
         topping: [
-            {
-                id: "1",
-                name: "Thêm gia vị",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Không tỏi",
-                basePrice: 0
-            }
+            { id: "16", name: "Thêm gia vị", categoryId: "8", basePrice: 5 }
         ]
     },
     {
@@ -575,16 +353,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Pure Veg",
         topping: [
-            {
-                id: "1",
-                name: "Thêm rau",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Không gia vị",
-                basePrice: 0
-            }
+            { id: "15", name: "Thêm rau", categoryId: "8", basePrice: 5 }
         ]
     },
     {
@@ -595,16 +364,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Pure Veg",
         topping: [
-            {
-                id: "1",
-                name: "Thêm bí xanh",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Không bơ",
-                basePrice: 0
-            }
+            { id: "15", name: "Thêm rau", categoryId: "8", basePrice: 5 }
         ]
     },
     {
@@ -615,16 +375,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Pasta",
         topping: [
-            {
-                id: "1",
-                name: "Thêm pho-mát",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không tỏi",
-                basePrice: 0
-            }
+            { id: "2", name: "Thêm pho-mát", categoryId: "8", basePrice: 10 }
         ]
     },
     {
@@ -635,16 +386,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Pasta",
         topping: [
-            {
-                id: "1",
-                name: "Thêm sốt cà chua",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Không pho-mát",
-                basePrice: 0
-            }
+            { id: "4", name: "Sốt cà chua",  categoryId: "8", basePrice: 5 }
         ]
     },
     {
@@ -655,16 +397,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Pasta",
         topping: [
-            {
-                id: "1",
-                name: "Thêm kem",
-                basePrice: 10
-            },
-            {
-                id: "2",
-                name: "Không bơ",
-                basePrice: 0
-            }
+            { id: "3", name: "Thêm sốt", categoryId: "8", basePrice: 10 }
         ]
     },
     {
@@ -675,16 +408,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Pasta",
         topping: [
-            {
-                id: "1",
-                name: "Gà nướng",
-                basePrice: 20
-            },
-            {
-                id: "2",
-                name: "Không pho-mát",
-                basePrice: 0
-            }
+            { id: "5",  name: "Gà nướng", categoryId: "8", basePrice: 20 }
         ]
     },
     {
@@ -695,16 +419,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Noodles",
         topping: [
-            {
-                id: "1",
-                name: "Thêm bơ",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Không gia vị",
-                basePrice: 0
-            }
+            { id: "12", name: "Thêm bơ", categoryId: "8", basePrice: 5 }
         ]
     },
     {
@@ -715,16 +430,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Noodles",
         topping: [
-            {
-                id: "1",
-                name: "Thêm rau",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Không gia vị",
-                basePrice: 0
-            }
+            { id: "15", name: "Thêm rau", categoryId: "8", basePrice: 5 }
         ]
     },
     {
@@ -735,16 +441,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Noodles",
         topping: [
-            {
-                id: "1",
-                name: "Thêm nước sốt",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Không hành",
-                basePrice: 0
-            }
+            { id: "3", name: "Thêm sốt", categoryId: "8", basePrice: 5 }
         ]
     },
     {
@@ -755,16 +452,7 @@ export const menu_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Noodles",
         topping: [
-            {
-                id: "1",
-                name: "Thêm rau",
-                basePrice: 5
-            },
-            {
-                id: "2",
-                name: "Không tỏi",
-                basePrice: 0
-            }
+            { id: "15", name: "Thêm rau", categoryId: "8", basePrice: 5 }
         ]
     }
 ];
